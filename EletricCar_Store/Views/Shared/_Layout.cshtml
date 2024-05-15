@@ -18,12 +18,27 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+                        <li><a asp-area="" asp-controller="Car" asp-action="Index">Carros</a></li>
+                        <span>&nbsp; &nbsp; &nbsp;</span>
+
+                        <li><a asp-area="" asp-controller="Cart" asp-action="Index">Carrinho</a></li>
+                        <span>&nbsp; &nbsp; &nbsp;</span>
+
+                        
+                            <li><a asp-area="" asp-controller="Brand" asp-action="Index">Marcas</a></li>
+                            <span>&nbsp; &nbsp; &nbsp;</span>
+
+                            <li><a asp-area="" asp-controller="Address" asp-action="Index">Endereços</a></li>
+                            <span>&nbsp; &nbsp; &nbsp;</span>
+
+                            <li><a asp-area="" asp-controller="Order" asp-action="Index">Meus pedidos</a></li>
+                            <span>&nbsp; &nbsp; &nbsp;</span>
+
+                            <li><a asp-area="" asp-controller="Login" asp-action="LogOff">Logoff</a></li>
+                            <span>&nbsp; &nbsp; &nbsp;</span>
+                        
+                            <li><a asp -area="" asp-controller="Login" asp-action="Index">Login</a></li>
+                        
                     </ul>
                 </div>
             </div>
