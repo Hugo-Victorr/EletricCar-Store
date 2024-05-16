@@ -119,7 +119,7 @@ namespace EletricCar_Store.Controllers
 
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            if (ExigeAutenticacao && !HelperControllers.VerificaUserLogado(HttpContext.Session))
+            if (ExigeAutenticacao && !HelperControllers.VerifyUserIsLog(HttpContext.Session))
                 context.Result = RedirectToAction("Index", "Login");
             else
             {

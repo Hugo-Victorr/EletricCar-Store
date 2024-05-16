@@ -5,7 +5,7 @@ namespace EletricCar_Store.Controllers
 {
     public static class HelperControllers
     {
-        public static bool VerificaUserLogado(ISession session)
+        public static bool VerifyUserIsLog(ISession session)
         {
             string logado = session.GetString("Logado");
             if (logado == null)
@@ -14,9 +14,9 @@ namespace EletricCar_Store.Controllers
                 return true;
         }
 
-        public static void LimparCarrinho(ISession session)
+        public static void CleanCart(ISession session)
         {
-            session.Remove("carrinho");                
+            session.Remove("cart");                
         }
     }
 

@@ -10,11 +10,10 @@ namespace EletricCar_Store.DAO
     {
         protected override SqlParameter[] CriaParametros(OrderViewModel order)
         {
-            SqlParameter[] p = new SqlParameter[4];
+            SqlParameter[] p = new SqlParameter[3];
             p[0] = new SqlParameter("id", order.Id);
             p[1] = new SqlParameter("userId", order.UserId);
-            p[2] = new SqlParameter("totalValue", order.TotalValue);
-            p[3] = new SqlParameter("purchaseDate", order.PurchaseDate);
+            p[2] = new SqlParameter("purchaseDate", order.PurchaseDate);
             return p;
         }
 
@@ -23,7 +22,6 @@ namespace EletricCar_Store.DAO
             OrderViewModel a = new OrderViewModel();
             a.Id = Convert.ToInt32(registro["id"]);
             a.UserId = Convert.ToInt32(registro["userId"]);
-            a.TotalValue = Convert.ToInt32(registro["totalValue"]);
             a.PurchaseDate = Convert.ToDateTime(registro["purchaseDate"]);
 
             return a;

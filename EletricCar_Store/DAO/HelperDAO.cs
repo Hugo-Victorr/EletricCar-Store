@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EletricCar_Store.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -10,6 +11,8 @@ namespace EletricCar_Store.DAO
 {
     static class HelperDAO
     {
+        public static UserViewModel CurrentUser { get; set; }
+
         public static void ExecutaSQL(string sql, SqlParameter[] p)
         {
             SqlConnection conexao = ConexaoBD.GetConexao();

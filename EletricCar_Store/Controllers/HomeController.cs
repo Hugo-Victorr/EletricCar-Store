@@ -1,5 +1,6 @@
 ﻿using EletricCar_Store.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace EletricCar_Store.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.Logado = HelperControllers.VerifyUserIsLog(HttpContext.Session);
             return View();
         }
 
@@ -32,6 +34,18 @@ namespace EletricCar_Store.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+
+        public override void OnActionExecuting(ActionExecutingContext context)
+        {
+            if (!HelperControllers.VerifyUserIsLog(HttpContext.Session))
+                context.Result = RedirectToAction("Index", "Login");
+            else
+            {
+                ViewBag.Logado = true;
+                base.OnActionExecuting(context);
+            }
         }
     }
 }

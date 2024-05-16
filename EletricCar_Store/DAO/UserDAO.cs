@@ -10,11 +10,12 @@ namespace EletricCar_Store.DAO
     {
         protected override SqlParameter[] CriaParametros(UserViewModel user)
         {
-            SqlParameter[] p = new SqlParameter[4];
+            SqlParameter[] p = new SqlParameter[5];
             p[0] = new SqlParameter("id", user.Id);
             p[1] = new SqlParameter("name", user.Name);
             p[2] = new SqlParameter("email", user.Email);
-            p[3] = new SqlParameter("age", user.Age);
+            p[3] = new SqlParameter("password", user.Password);
+            p[4] = new SqlParameter("age", user.Age);
             return p;
         }
 
@@ -24,6 +25,7 @@ namespace EletricCar_Store.DAO
             a.Id = Convert.ToInt32(registro["id"]);
             a.Name = registro["name"].ToString();
             a.Email = registro["email"].ToString();
+            a.Password = registro["password"].ToString();
             a.Age = Convert.ToInt32(registro["age"]);
 
             return a;

@@ -54,6 +54,19 @@ namespace EletricCar_Store.DAO
             else
                 return MontaModel(tabela.Rows[0]);
         }
+        public virtual T Consulta(string usuario)
+        {
+            var p = new SqlParameter[]
+            {
+                new SqlParameter("usuario", usuario),
+                new SqlParameter("tabela", Tabela)
+            };
+            var tabela = HelperDAO.ExecutaProcSelect("spConsulta", p);
+            if (tabela.Rows.Count == 0)
+                return null;
+            else
+                return MontaModel(tabela.Rows[0]);
+        }
         public virtual int ProximoId()
         {
             var p = new SqlParameter[]
