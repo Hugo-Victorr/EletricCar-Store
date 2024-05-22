@@ -1,5 +1,29 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model List<CarViewModel>
+
+
+<a href="/car/Create" class="btn btn-success">Novo registro</a>
+<br />
+<br />
+<table class="table table-striped table-responsive">
+    <tr>
+        <th>Ações</th>
+        <th>Código</th>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Preço</th>
+    </tr>
+
+    @foreach (var car in Model)
+    {
+        <tr>
+            <td>
+                <a href="/car/edit?id=@car.Id">✍🏻</a>
+                <a href="javascript:apagarCarro(@car.Id)">💣</a>
+            </td>
+            <td>@car.Id</td>
+            <td>@car.Brand</td>
+            <td>@car.Model</td>
+            <td>@car.Price.ToString()</td>
+        </tr>
+    }
+</table>

@@ -1,5 +1,23 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model BrandViewModel
 @{
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<h2>Cadastro de Marcas</h2>
+
+<form action="Save" method="post" class="col-md-6">
+
+    <input type="hidden" name="Operacao" value="@ViewBag.Operacao" />
+
+    <label for="Id" class="control-label">Id</label>
+    <input asp-for="Id" class="form-control" readonly />
+    <br />
+
+    <label for="Nome" class="control-label">Nome da Marca</label>
+    <input asp-for="Description" class="form-control" />
+    <span asp-validation-for="Description" class="text-danger"></span>
+    <br />
+
+    <br />
+    <input type="submit" value="Salvar dados" class="btn btn-info" />
+    <br />
+</form>

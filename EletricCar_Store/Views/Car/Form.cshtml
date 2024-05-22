@@ -1,5 +1,51 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model CarViewModel
 @{
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<h2>Cadastro de Carro</h2>
+
+<!-- <marquee behavior="alternate">  -->
+<form action="Save" method="post" enctype="multipart/form-data" class="col-md-6">
+
+    <input type="hidden" name="Operacao" value="@ViewBag.Operacao" />
+
+    <label for="Id" class="control-label">id</label>
+    <input asp-for="Id" class="form-control" readonly />
+    <span asp-validation-for="Id" class="text-danger"></span>
+    <br />
+
+    <label for="Marca" class="control-label">Marca</label>
+    <input asp-for="Brand" class="form-control" />
+    <span asp-validation-for="Brand" class="text-danger"></span>
+    <br />
+
+    <label for="Modelo" class="control-label">Marca</label>
+    <input asp-for="Price" class="form-control" />
+    <span asp-validation-for="Price" class="text-danger"></span>
+    <br />
+
+    <label for="Preço" class="control-label">Marca</label>
+    <input asp-for="Brand" class="form-control" />
+    <span asp-validation-for="Brand" class="text-danger"></span>
+    <br />
+
+    <br />
+    <input type="file" name="Imagem" id="Imagem" onchange="exibirImagem()" class="btn btn-secondary">
+    <img id="imgPreview" src="data:image/jpeg;base64,@Model.ImagemEmBase64" class="img-responsive" width="200">
+    <span asp-validation-for="Imagem" class="text-danger"></span>
+
+    <br />
+    <input type="submit" value="Salvar dados" class="btn btn-info" />
+    <br />
+</form>
+<!-- </marquee> -->
+
+<script>
+    function exibirImagem() {
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("Imagem").files[0]);
+        oFReader.onload = function (oFREvent) {
+            document.getElementById("imgPreview").src = oFREvent.target.result;
+        };
+    }
+</script>

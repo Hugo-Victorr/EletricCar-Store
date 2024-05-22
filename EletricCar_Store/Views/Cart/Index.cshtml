@@ -1,5 +1,31 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<CartItemViewModel>
 @{
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<center><h2>Itens do carrinho</h2> </center>
+<br />
+<div class="fundo-vitrine">
+    <img src="~/images/cart.png" width="48" height="48" />
+    Há @ViewBag.TotalCarrinho Carros no carrinho.
+    <a href="/Cart/Visualizar">Visualizar</a>
+</div>
+<br />
+<br />
+<div class="fundo-vitrine">
+    <ul class="ul-vitrine">
+        @foreach (var car in Model)
+        {
+            <li class="li-vitrine">
+                <a href="/Cart/Detalhes/?carId=@car.Id">
+                    <figure class="figura-vitrine">
+                        <img class="imagem-vitrine" src="data:image/jpeg;base64,@car.ImagemEmBase64">
+                        <figcaption>
+                            @car.Model<br>
+                        </figcaption>
+                    </figure>
+                </a>
+            </li>
+        }
+    </ul>
+</div>
+

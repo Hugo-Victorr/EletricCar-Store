@@ -11,7 +11,7 @@ namespace EletricCar_Store.DAO
         {
             SqlParameter[] p = new SqlParameter[2];
             p[0] = new SqlParameter("id", brand.Id);
-            p[1] = new SqlParameter("description", brand.Description);
+            p[1] = new SqlParameter("descricao", brand.Description);
             return p;
         }
 
@@ -19,15 +19,14 @@ namespace EletricCar_Store.DAO
         {
             BrandViewModel a = new BrandViewModel();
             a.Id = Convert.ToInt32(registro["id"]);
-            a.Description = registro["description"].ToString();
+            a.Description = registro["descricao"].ToString();
 
             return a;
         }
 
         protected override void SetTabela()
         {
-            Tabela = "Brands";
-            NomeSpListagem = "spListingBrands";
+            Tabela = "Marca";
         }
     }
 }

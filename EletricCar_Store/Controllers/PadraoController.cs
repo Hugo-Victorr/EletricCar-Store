@@ -29,6 +29,7 @@ namespace EletricCar_Store.Controllers
                 return View("Error", new ErrorViewModel(erro.ToString()));
             }
         }
+
         public virtual IActionResult Create()
         {
             try
@@ -75,7 +76,7 @@ namespace EletricCar_Store.Controllers
         }
         protected virtual void ValidaDados(T model, string operacao)
         {
-            ModelState.Clear();
+             ModelState.Clear();
             if (operacao == "I" && DAO.Consulta(model.Id) != null)
                 ModelState.AddModelError("Id", "Código já está em uso!");
             if (operacao == "A" && DAO.Consulta(model.Id) == null)

@@ -24,26 +24,23 @@ namespace EletricCar_Store.Controllers
 
             if (model.Price <= 0)
                 ModelState.AddModelError("Preço", "Preencha o Preço.");
-
-            //Imagem será obrigatio apenas na inclusão.
-            //Na alteração iremos considerar a que já estava salva.
-            //if (model.Imagem == null && operacao == "I")
-            //    ModelState.AddModelError("Imagem", "Escolha uma imagem.");
-            //if (model.Imagem != null && model.Imagem.Length / 1024 / 1024 >= 2)
-            //    ModelState.AddModelError("Imagem", "Imagem limitada a 2 mb.");
-            //if (ModelState.IsValid)
-            //{
-            //    //na alteração, se não foi informada a imagem, iremos manter a que já estava salva.
-            //    if (operacao == "A" && model.Imagem == null)
-            //    {
-            //        CarViewModel cid = DAO.Consulta(model.Id);
-            //        model.ImagemEmByte = cid.ImagemEmByte;
-            //    }
-            //    else
-            //    {
-            //        model.ImagemEmByte = ConvertImageToByte(model.Imagem);
-            //    }
-            //}
+            if (model.Imagem == null && operacao == "I")
+                ModelState.AddModelError("Imagem", "Escolha uma imagem.");
+            if (model.Imagem != null && model.Imagem.Length / 1024 / 1024 >= 2)
+                ModelState.AddModelError("Imagem", "Imagem limitada a 2 mb.");
+            if (ModelState.IsValid)
+            {
+                //na alteração, se não foi informada a imagem, iremos manter a que já estava salva.
+                if (operacao == "A" && model.Imagem == null)
+                {
+                    CarViewModel cid = DAO.Consulta(model.Id);
+                    model.ImagemEmByte = cid.ImagemEmByte;
+                }
+                else
+                {
+                    model.ImagemEmByte = ConvertImageToByte(model.Imagem);
+                }
+            }
         }
 
         public byte[] ConvertImageToByte(IFormFile file)

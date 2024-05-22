@@ -1,5 +1,36 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model List<AddressViewModel>
+
+
+<a href="/address/Create" class="btn btn-success">Novo registro</a>
+<br />
+<br />
+<table class="table table-striped table-responsive">
+    <tr>
+        <th>Ações</th>
+        <th>Id</th>
+        <th>Usuario ID </th>
+        <th>CEP</th>
+        <th>Endereço</th>
+        <th>Numero</th>
+        <th>Cidade</th>
+        <th>Bairro</th>
+        <th>UF</th>
+    </tr>
+
+    @foreach (AddressViewModel endereco in Model)
+    {
+        <tr>
+            <td>
+                <a href="/address/edit?id=@endereco.Id">✍🏻</a>
+                <a href="javascript:apagarEndereco(@endereco.Id)">💣</a>
+            </td>
+            <td>@endereco.Id</td>
+            <td>@endereco.CEP</td>
+            <td>@endereco.Address.ToString()</td>
+            <td>@endereco.Number.ToString()</td>
+            <td>@endereco.City.ToString()</td>
+            <td>@endereco.Neighborhood.ToString()</td>
+            <td>@endereco.State.ToString()</td>
+        </tr>
+    }
+</table>

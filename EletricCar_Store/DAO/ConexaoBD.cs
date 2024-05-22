@@ -15,7 +15,7 @@ namespace EletricCar_Store.DAO
         /// <returns>Conexão aberta</returns>
         public static SqlConnection GetConexao()
         {
-            string strCon = "Data Source=LOCALHOST; Database=AULADB; user id=sa; password=123456";
+            string strCon = "Data Source=LOCALHOST; Database=N1B2_Project; user id=sa; password=123456";
             SqlConnection conexao = new SqlConnection(strCon);
             conexao.Open();
             return conexao;

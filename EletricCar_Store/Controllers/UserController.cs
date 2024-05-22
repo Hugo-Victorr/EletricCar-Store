@@ -12,6 +12,7 @@ namespace EletricCar_Store.Controllers
         {
             DAO = new UserDAO();
             GeraProximoId = true;
+            NomeViewForm = "RegisterForm";
         }
 
         protected override void ValidaDados(UserViewModel model, string operacao)
@@ -30,6 +31,8 @@ namespace EletricCar_Store.Controllers
                 ModelState.AddModelError("DataNascimento", "Data inválida!");
 
         }
+
+
 
 
         //protected override void PreencheDadosParaView(string Operacao, UserViewModel model)

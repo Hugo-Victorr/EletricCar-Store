@@ -2,6 +2,8 @@
 using EletricCar_Store.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.WebEncoders.Testing;
+using System;
 
 namespace EletricCar_Store.Controllers
 {
@@ -19,9 +21,19 @@ namespace EletricCar_Store.Controllers
             if (usuario == "admin" && senha == "1234")
             {
                 HttpContext.Session.SetString("Logado", "true");
-                var userDao = new UserDAO();
-                var currentUser = userDao.Consulta(usuario);
-                HelperDAO.CurrentUser = currentUser;
+                HelperDAO.CurrentUser = new UserViewModel()
+                {
+                    Id = 1,
+                    Name = usuario,
+                    Age = 22,
+                    Email = "teste@teste.com",
+                    Password = senha,
+                    BornDate = DateTime.UtcNow
+                };
+
+                //var userDao = new UserDAO();
+                //var currentUser = userDao.Consulta(usuario);
+                //HelperDAO.CurrentUser = currentUser;
 
                 return RedirectToAction("index", "Home");
             }

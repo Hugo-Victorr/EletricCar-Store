@@ -1,5 +1,4 @@
-﻿\Login\Index.cshtml
-@{
+﻿@{
     ViewData["Title"] = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -15,6 +14,8 @@
             <input type="submit" value="Login" class="btn btn-success" />
             <br />
             <span class="text-danger"> @ViewBag.Erro</span>
+
+            <a href="/User/Create" class="btn btn-success">Cadastrar-se</a>
         </form>
     </div>
 </div>

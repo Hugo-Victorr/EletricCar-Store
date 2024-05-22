@@ -1,0 +1,27 @@
+﻿@model CartItemViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Escolha a quantidade de carros</h2>
+<br />
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AdicionarCarrinho">
+            <input asp-for="ProductId" hidden />
+            <img id="imgPreview" src="data:image/jpeg;base64,@Model.ImagemEmBase64"
+                 class="img-responsive" width="200">
+            <br />
+            <strong>Carro : @Model.ProductId - @Model.Model</strong>
+            <br />
+            <br />
+            Quantidade:
+            <input asp-for="Quantity" />
+            <br />
+            <br />
+            <input type="submit" value="Adicionar ao carrinho" class="btn btn-primary" />
+            <br />
+            <span class="text-danger">@ViewBag.Erro</span>
+        </form>
+    </div>
+</div>

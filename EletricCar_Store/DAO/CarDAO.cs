@@ -3,6 +3,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Reflection.Emit;
 using System;
+using System.Reflection;
 
 namespace EletricCar_Store.DAO
 {
@@ -10,11 +11,15 @@ namespace EletricCar_Store.DAO
     {
         protected override SqlParameter[] CriaParametros(CarViewModel car)
         {
-            SqlParameter[] p = new SqlParameter[4];
+            object imgByte = car.ImagemEmByte;
+            if (imgByte == null)
+                imgByte = DBNull.Value;
+            SqlParameter[] p = new SqlParameter[5];
             p[0] = new SqlParameter("id", car.Id);
-            p[1] = new SqlParameter("brand", car.Brand);
-            p[2] = new SqlParameter("model", car.Model);
-            p[3] = new SqlParameter("price", car.Price);
+            p[1] = new SqlParameter("marca", car.Brand);
+            p[2] = new SqlParameter("modelo", car.Model);
+            p[3] = new SqlParameter("preco", car.Price);
+            p[4] = new SqlParameter("imagem", imgByte);
             return p;
         }
 
@@ -22,17 +27,18 @@ namespace EletricCar_Store.DAO
         {
             CarViewModel a = new CarViewModel();
             a.Id = Convert.ToInt32(registro["id"]);
-            a.Brand = Convert.ToInt32(registro["brand"]);
-            a.Model = registro["model"].ToString();
-            a.Price = Convert.ToDecimal(registro["price"].ToString());
+            a.Brand = Convert.ToInt32(registro["marca"]);
+            a.Model = registro["modelo"].ToString();
+            a.Price = Convert.ToDecimal(registro["preco"].ToString());
+            if (registro["imagem"] != DBNull.Value)
+                a.ImagemEmByte = registro["imagem"] as byte[];
 
             return a;
         }
 
         protected override void SetTabela()
         {
-            Tabela = "Car";
-            NomeSpListagem = "spListingCars";
+            Tabela = "Carro";
         }
     }
 }

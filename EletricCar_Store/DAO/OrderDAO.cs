@@ -12,8 +12,8 @@ namespace EletricCar_Store.DAO
         {
             SqlParameter[] p = new SqlParameter[3];
             p[0] = new SqlParameter("id", order.Id);
-            p[1] = new SqlParameter("userId", order.UserId);
-            p[2] = new SqlParameter("purchaseDate", order.PurchaseDate);
+            p[1] = new SqlParameter("usuarioId", order.UserId);
+            p[2] = new SqlParameter("dataCompra", order.PurchaseDate);
             return p;
         }
 
@@ -21,16 +21,16 @@ namespace EletricCar_Store.DAO
         {
             OrderViewModel a = new OrderViewModel();
             a.Id = Convert.ToInt32(registro["id"]);
-            a.UserId = Convert.ToInt32(registro["userId"]);
-            a.PurchaseDate = Convert.ToDateTime(registro["purchaseDate"]);
+            a.UserId = Convert.ToInt32(registro["usuarioId"]);
+            a.PurchaseDate = Convert.ToDateTime(registro["dataCompra"]);
 
             return a;
         }
 
         protected override void SetTabela()
         {
-            Tabela = "Order";
-            NomeSpListagem = "spListingOrders";
+            Tabela = "Pedido";
+            NomeSpListagem = "spListaPedidos";
         }
     }
 }

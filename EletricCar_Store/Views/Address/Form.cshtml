@@ -1,5 +1,51 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model AddressViewModel
 @{
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<h2>Cadastro de Endereco</h2>
+
+<form action="Save" method="post" class="col-md-6">
+
+    <input type="hidden" name="Operacao" value="@ViewBag.Operacao" />
+
+    <label for="Id" class="control-label" hidden="hidden">Id</label>
+    <input asp-for="Id" class="form-control" hidden="hidden" readonly />
+    
+    <label for="usuarioId" class="control-label" hidden="hidden">Usuario Id</label>
+    <input asp-for="UserId" class="form-control" hidden="hidden" readonly />
+    
+    <label for="CEP" class="control-label">CEP</label>
+    <input type="text" name="cep" id="cep" onblur="buscaCEP()" />
+    <input type="button" name="btnBuscaCEP" id="cep" value="Buscar" onclick="buscaCEP()" />
+    <span asp-validation-for="CEP" class="text-danger"></span>
+    <br>
+
+    <label for="Endereco" class="control-label">Endereço</label>
+    <input asp-for="Address" id="logradouro" class="form-control" />
+    <span asp-validation-for="Address" class="text-danger"></span>
+    <br />
+
+    <label for="Numero" class="control-label">Numero</label>
+    <input asp-for="Number" id="numero" class="form-control" />
+    <span asp-validation-for="Number" class="text-danger"></span>
+    <br />
+
+    <label for="Cidade" class="control-label">Cidade</label>
+    <input asp-for="City" id="localidade" class="form-control" />
+    <span asp-validation-for="City" class="text-danger"></span>
+    <br />
+
+    <label for="Bairro" class="control-label">Bairro</label>
+    <input asp-for="Neighborhood" id="bairro" class="form-control" />
+    <span asp-validation-for="Neighborhood" class="text-danger"></span>
+    <br />
+
+    <label for="UF" class="control-label">UF</label>
+    <input asp-for="State" id="uf" class="form-control" />
+    <span asp-validation-for="State" class="text-danger"></span>
+    <br />
+
+    <br />
+    <input type="submit" value="Salvar Endereço" class="btn btn-info" />
+    <br />
+</form>

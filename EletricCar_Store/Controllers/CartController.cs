@@ -16,10 +16,9 @@ namespace EletricCar_Store.Controllers
         {
             try
             {
-                CarDAO dao = new CarDAO();
+                CartItemDAO dao = new CartItemDAO();
                 var carList = dao.Listagem();
                 var cart = GetCartFromSession();
-                //@ViewBag.TotalCarrinho = carrinho.Sum(c => c.Quantidade);
                 @ViewBag.CartTotal = 0;
                 foreach (var c in cart.CartItens)
                     @ViewBag.CartTotal += c.Quantity;

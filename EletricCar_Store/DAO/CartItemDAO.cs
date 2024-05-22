@@ -12,11 +12,11 @@ namespace EletricCar_Store.DAO
         {
             SqlParameter[] p = new SqlParameter[6];
             p[0] = new SqlParameter("id", cartItem.Id);
-            p[1] = new SqlParameter("orderId", cartItem.OrderId);
-            p[2] = new SqlParameter("productId", cartItem.ProductId);
-            p[3] = new SqlParameter("quantity", cartItem.Quantity);
-            p[4] = new SqlParameter("price", cartItem.Price);
-            p[5] = new SqlParameter("totalValue", cartItem.TotalValue);
+            p[1] = new SqlParameter("pedidoId", cartItem.OrderId);
+            p[2] = new SqlParameter("produtoId", cartItem.ProductId);
+            p[3] = new SqlParameter("quantidade", cartItem.Quantity);
+            p[4] = new SqlParameter("preco", cartItem.Price);
+            p[5] = new SqlParameter("valorTotal", cartItem.TotalValue);
             return p;
         }
 
@@ -24,19 +24,19 @@ namespace EletricCar_Store.DAO
         {
             CartItemViewModel a = new CartItemViewModel();
             a.Id = Convert.ToInt32(registro["id"]);
-            a.OrderId = Convert.ToInt32(registro["orderId"]);
-            a.ProductId = Convert.ToInt32(registro["productId"]);
-            a.Quantity = Convert.ToInt32(registro["quantity"]);
-            a.Price = Convert.ToDecimal(registro["price"]);
-            a.TotalValue = Convert.ToDecimal(registro["totalValue"]);
+            a.OrderId = Convert.ToInt32(registro["pedidoId"]);
+            a.ProductId = Convert.ToInt32(registro["produtoId"]);
+            a.Quantity = Convert.ToInt32(registro["quantidade"]);
+            a.Price = Convert.ToDecimal(registro["preco"]);
+            a.TotalValue = Convert.ToDecimal(registro["valorTotal"]);
 
             return a;
         }
 
         protected override void SetTabela()
         {
-            Tabela = "CartItem";
-            NomeSpListagem = "spListingCartItens";
+            Tabela = "CarrinhoItem";
+            //NomeSpListagem = "spListaCarrinhoItens";
         }
     }
 }

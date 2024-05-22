@@ -10,12 +10,13 @@ namespace EletricCar_Store.DAO
     {
         protected override SqlParameter[] CriaParametros(UserViewModel user)
         {
-            SqlParameter[] p = new SqlParameter[5];
+            SqlParameter[] p = new SqlParameter[6];
             p[0] = new SqlParameter("id", user.Id);
-            p[1] = new SqlParameter("name", user.Name);
-            p[2] = new SqlParameter("email", user.Email);
-            p[3] = new SqlParameter("password", user.Password);
-            p[4] = new SqlParameter("age", user.Age);
+            p[1] = new SqlParameter("nome", user.Name);
+            p[2] = new SqlParameter("idade", user.Age); 
+            p[3] = new SqlParameter("email", user.Email);
+            p[4] = new SqlParameter("senha", user.Password);
+            p[5] = new SqlParameter("dataNascimento", user.BornDate);
             return p;
         }
 
@@ -23,18 +24,18 @@ namespace EletricCar_Store.DAO
         {
             UserViewModel a = new UserViewModel();
             a.Id = Convert.ToInt32(registro["id"]);
-            a.Name = registro["name"].ToString();
+            a.Name = registro["nome"].ToString();
+            a.Age = Convert.ToInt32(registro["idade"]);
             a.Email = registro["email"].ToString();
-            a.Password = registro["password"].ToString();
-            a.Age = Convert.ToInt32(registro["age"]);
+            a.Password = registro["senha"].ToString();
+            a.BornDate = Convert.ToDateTime(registro["dataNascimento"]);
 
             return a;
         }
 
         protected override void SetTabela()
         {
-            Tabela = "User";
-            NomeSpListagem = "spListingUsers";
+            Tabela = "Usuario";
         }
     }
 }

@@ -23,19 +23,26 @@ namespace EletricCar_Store.Controllers
                 ModelState.AddModelError("CEP", "Preencha o CEP.");
             if (string.IsNullOrEmpty(model.Address))
                 ModelState.AddModelError("Endereço", "Campo obrigatório.");
-            if (model.Number <= 0)
+            if (string.IsNullOrEmpty(model.Number))
                 ModelState.AddModelError("Numero", "Informe o numero da residência.");
+            if (string.IsNullOrEmpty(model.City))
+                ModelState.AddModelError("Cidade", "Informe a cidade.");
+            if (string.IsNullOrEmpty(model.Neighborhood))
+                ModelState.AddModelError("Bairro", "Informe o bairro.");
+            if (string.IsNullOrEmpty(model.State))
+                ModelState.AddModelError("Numero", "Informe o UF.");
 
         }
 
 
         protected override void PreencheDadosParaView(string Operacao, AddressViewModel model)
         {
-            //base.PreencheDadosParaView(Operacao, model);
-            //if (Operacao == "I")
-            //    model.DataNascimento = DateTime.Now;
+            base.PreencheDadosParaView(Operacao, model);
+            if (Operacao == "I")
+                model.Id = DAO.ProximoId();
 
-            //PreparaListaCidadesParaCombo();
+            model.UserId = HelperDAO.CurrentUser.Id;
+
         }
 
         //private void PreparaListaCidadesParaCombo()
